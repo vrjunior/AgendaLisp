@@ -1,6 +1,7 @@
 (defun insereFim (contato numero)
 	(cond
 		( (atom contato) (cons numero 'nil) ) 
+		( (equal (car contato) numero) contato)
 		( 't (cons (car contato) (insereFim (cdr contato) numero)) )
 	)
 )
@@ -21,3 +22,5 @@
 
 (adicionanumero 'nil 'hu3br '123)
 (adicionanumero (cons (cons 'gg (cons '44 'nil)) 'nil) 'hu3br '123)
+(adicionanumero (cons (cons 'gg (cons '44 'nil)) 'nil) 'gg '44)
+(adicionanumero (cons (cons 'gg (cons '44 'nil)) 'nil) 'gg '45)

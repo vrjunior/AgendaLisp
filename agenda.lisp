@@ -34,6 +34,29 @@
 	)
 )
 
+(defun checarSeTemNr (contato)
+	(cond 
+		( (equal (cdr contato) 'NIL) 'NIL )
+		( 'T contato )
+	)
+)
+
+(defun removeInformacaoContato ( contato info )
+	(cond
+		( (atom contato) 'nil )
+		( (equal (car contato) info) (cdr contato) ) 
+		('t (checarSeTemNr(cons (car contato) (removeInformacaoContato (cdr contato) info))) )
+	)
+) 
+
+(defun removeNumero (agenda nome numero) 
+	(cond 
+		( (atom agenda) 'NIL )
+		( (equal (caar agenda) nome) (removeInformacaoContato (car agenda) numero) )
+		('t (cons (car agenda) (removeNumero (cdr agenda) nome numero)) )
+	)
+)
+
 (setq agenda 'nil)
 (setq agenda (adicionanumero agenda 'hu3br '123))
 (setq agenda (adicionanumero agenda 'guilhermezera '666))

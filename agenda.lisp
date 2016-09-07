@@ -21,7 +21,7 @@
 )
 
 (defun incluir(agenda contato)
-	(adicionaNumero agenda (car contato) (cdr contato))
+	(adicionaNumero agenda (car contato) (cadr contato))
 )
 
 (defun removeContato (agenda nome)
@@ -34,7 +34,7 @@
 (defun Telefones (agenda nome)
 	(cond	((atom agenda) 'INEXISTENTE)
 			((equal (caar agenda) nome) (cdar agenda))
-			('t (buscaContato (cdr agenda) nome))
+			('t (Telefones (cdr agenda) nome))
 	)
 )
 

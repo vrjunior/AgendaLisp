@@ -20,6 +20,10 @@
 	)
 )
 
+(defun incluir(agenda contato)
+	(adicionaNumero agenda (car contato) (cdr contato))
+)
+
 (defun removeContato (agenda nome)
 	(cond	((atom agenda) 'NIL)
 			((equal (caar agenda) nome) (cdr agenda))
@@ -27,9 +31,9 @@
 	)
 )
 
-(defun buscaContato (agenda nome)
-	(cond	((atom agenda) 'NIL)
-			((equal (caar agenda) nome) (car agenda))
+(defun Telefones (agenda nome)
+	(cond	((atom agenda) 'INEXISTENTE)
+			((equal (caar agenda) nome) (cdar agenda))
 			('t (buscaContato (cdr agenda) nome))
 	)
 )
@@ -65,6 +69,10 @@
 		)
 		(  't (cons (car agenda) (removeNumero (cdr agenda) nome numero))  )
 	)
+)
+
+(defun excluir (agenda contato)
+	(removeNumero agenda (car contato) (cadr contato))
 )
 
 (setq agendao (adicionanumero 'nil 'hu3br '123))
